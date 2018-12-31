@@ -48,6 +48,25 @@ services:
           - local
       ports:
         - 8080:8080
+  sphinxsearch:
+    working_dir: ${WORKING_DIR}
+    build:
+        context: docker/sphinxsearch
+        dockerfile: Dockerfile
+        args:
+          sphinx_config_folder: ${SPHINX_CONFIG_FOLDER}
+          sphinx_data_folder: ${SPHINX_DATA_FOLDER}
+          postgres_host: ${POSTGRES_HOST}
+          postgres_user: ${POSTGRES_USER}
+          postgres_password: ${POSTGRES_PASSWORD}
+          postgres_db: ${POSTGRES_DB}
+    depends_on:
+        - php
+        - postgres
+    networks:
+        - local
+    ports:
+      - 9312:9312
   redis:
       image: redis:4.0.8
       networks:
