@@ -1,0 +1,17 @@
+class_name: ApiTester
+modules:
+    enabled:
+        - PhpBrowser
+        - REST
+        - Db
+        - Asserts
+    config:
+        PhpBrowser:
+            url: 'http://site.symfony4restauth_local'
+        REST:
+            depends: PhpBrowser
+            url: 'http://site.symfony4restauth_local'
+        Db:
+            dsn: 'pgsql:host=postgres;dbname=symfony'
+            user: 'symfony'
+            password: '123456'

@@ -1,0 +1,56 @@
+version: '3'
+services:
+  site:
+      working_dir: ${WORKING_DIR}
+      build:
+          context: docker/nginx
+          dockerfile: Dockerfile
+          args:
+            - NGINX_TEMPLATE=${NGINX_TEMPLATE}
+            - NGINX_SERVER_NAME=${NGINX_SERVER_NAME}
+            - NGINX_ROOT=${NGINX_ROOT}
+      volumes:
+          - "./:${WORKING_DIR}"
+      networks:
+          - local
+      env_file:
+        - .env
+      depends_on:
+          - php
+  php:
+      working_dir: ${WORKING_DIR}
+      build:
+          context: docker/php
+          dockerfile: Dockerfile
+      env_file:
+        - .env
+      volumes:
+          - "./:${WORKING_DIR}"
+          - "/tmp:/tmp"
+      networks:
+          - local
+  postgres:
+      image: postgres:9.6
+      env_file:
+          - .env
+      volumes:
+          - ./docker/postgres/data:/var/lib/postgresql/data
+          - "/tmp:/tmp"
+      networks:
+          - local
+      depends_on:
+          - php
+  adminer:
+      image: adminer
+      env_file:
+        - .env
+      networks:
+          - local
+      ports:
+        - 8080:8080
+  redis:
+      image: redis:4.0.8
+      networks:
+          - local
+networks:
+  local:
