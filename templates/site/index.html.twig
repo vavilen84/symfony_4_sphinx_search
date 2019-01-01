@@ -21,6 +21,7 @@
                 <a href="{{ path("index") }}" type="reset" class="btn btn-success">Reset</a>
             </div>
         </div>
+        {{ form_end(searchForm) }}
     </div>
 
     <div class="mt10">
@@ -31,14 +32,6 @@
                     <div>
                         {{ post.content }}
                     </div>
-                    <div>
-                        {% if post.tags |length > 0 %}
-                            {% for tag in post.tags %}
-                                {{ tag }}
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-
                 </div>
             {% endfor %}
         {% else %}

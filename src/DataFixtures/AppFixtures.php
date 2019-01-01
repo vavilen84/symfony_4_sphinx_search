@@ -28,7 +28,6 @@ class AppFixtures extends Fixture
         $entity->setTitle($data['title']);
         $entity->setContent($data['content']);
         $entity->setStatus($data['status']);
-        $entity->setTags($data['tags']);
 
         return $entity;
     }
@@ -37,22 +36,19 @@ class AppFixtures extends Fixture
     {
         $data = [
             [
-                'title' => 'Post #1',
+                'title' => 'post_1',
                 'content' => 'one common',
-                'status' => Post::STATUS_ACTIVE,
-                'tags' => ['tag1', 'commonTag'],
+                'status' => Post::STATUS_ACTIVE
             ],
             [
-                'title' => 'Post #2',
+                'title' => 'post_2',
                 'content' => 'two common',
-                'status' => Post::STATUS_ACTIVE,
-                'tags' => ['tag2', 'commonTag'],
+                'status' => Post::STATUS_ACTIVE
             ],
             [
-                'title' => 'Post #3 INACTIVE',
+                'title' => 'post_3 (inactive)',
                 'content' => 'three common',
-                'status' => Post::STATUS_ACTIVE,
-                'tags' => ['tag3', 'commonTag'],
+                'status' => Post::STATUS_DELETED
             ],
         ];
 

@@ -14,7 +14,8 @@ class SearchFormType extends AbstractType
     {
         $builder
             ->add('query', TextType::class, [
-                'trim' => true
+                'trim' => true,
+                'required' => true
             ])
             ->add('submit', SubmitType::class)
         ;

@@ -19,7 +19,9 @@ class SiteController extends AbstractController
         $searchForm = $this->createForm(SearchFormType::class);
         $searchForm->handleRequest($request);
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $posts = $sphinxSearchService->getList();
+            $formData = $searchForm->getData();
+            $searchQuery = $formData['query'] ?? '';
+            $posts = $sphinxSearchService->getList($searchQuery);
         } else {
             $postRepository = $this->getDoctrine()->getRepository(Post::class);
             $posts = $postRepository->findAll();

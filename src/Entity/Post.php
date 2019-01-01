@@ -30,11 +30,6 @@ class Post
     private $content;
 
     /**
-     * @ORM\Column(type="json_array")
-     */
-    private $tags;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $status;
@@ -64,18 +59,6 @@ class Post
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    public function setTags($tags): self
-    {
-        $this->tags = $tags;
 
         return $this;
     }
