@@ -11,7 +11,7 @@ ARG postgres_password
 RUN apt-get update
 RUN apt-get install -y wget sed libpq-dev
 
-RUN wget -nv -O - http://sphinxsearch.com/files/sphinx-3.0.3-facc3fb-linux-amd64.tar.gz | tar zx
+RUN wget -nv -O - http://sphinxsearch.com/files/sphinx-3.1.1-612d99f-linux-amd64.tar.gz | tar zx
 
 RUN cd sphinx-3.1.1/bin && cp searchd /usr/bin/searchd && cp indexer /usr/bin/indexer
 

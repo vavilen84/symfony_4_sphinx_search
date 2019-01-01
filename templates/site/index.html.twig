@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block pagetitle %}Index Page{% endblock %}
+
+{% block content %}
+
+    <div>
+        {{ form_start(searchForm) }}
+        <div class="row">
+            <div class="col-xs-6">
+                {{ form_row(searchForm.query, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 mt10">
+                {{ form_row(searchForm.submit, { 'attr': {'class': 'btn btn-success fl'} }) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 mt10">
+                <a href="{{ path("index") }}" type="reset" class="btn btn-success">Reset</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt10">
+        {% if posts|length > 0 %}
+            {% for post in posts %}
+                <div class="well">
+                    <h3>{{ post.title }}</h3>
+                    <div>
+                        {{ post.content }}
+                    </div>
+                    <div>
+                        {% if post.tags |length > 0 %}
+                            {% for tag in post.tags %}
+                                {{ tag }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            No results found
+        {% endif %}
+    </div>
+
+{% endblock %}
