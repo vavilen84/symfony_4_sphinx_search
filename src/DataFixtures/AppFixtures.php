@@ -8,6 +8,29 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
+    const FIRST_POST_CONTENT = 'one';
+    const SECOND_POST_CONTENT = 'two';
+    const THIRD_POST_CONTENT = 'three';
+    const COMMON_POST_CONTENT = 'common';
+
+    const POSTS = [
+        1 => [
+            'title' => 'post_1',
+            'content' => self::FIRST_POST_CONTENT . ' ' . self::COMMON_POST_CONTENT,
+            'status' => Post::STATUS_ACTIVE
+        ],
+        2 => [
+            'title' => 'post_2',
+            'content' => self::SECOND_POST_CONTENT . ' ' . self::COMMON_POST_CONTENT,
+            'status' => Post::STATUS_ACTIVE
+        ],
+        3 => [
+            'title' => 'post_3 (inactive)',
+            'content' => self::THIRD_POST_CONTENT . ' ' . self::COMMON_POST_CONTENT,
+            'status' => Post::STATUS_DELETED
+        ],
+    ];
+
     public function load(ObjectManager $manager)
     {
         $this->loadPosts($manager);
@@ -16,7 +39,7 @@ class AppFixtures extends Fixture
 
     protected function loadPosts(ObjectManager $manager)
     {
-        foreach ($this->getPostData() as $data) {
+        foreach (self::POSTS as $data) {
             $entity = $this->getPrefilledPostEntity($data);
             $manager->persist($entity);
         }
@@ -31,28 +54,4 @@ class AppFixtures extends Fixture
 
         return $entity;
     }
-
-    protected function getPostData(): array
-    {
-        $data = [
-            [
-                'title' => 'post_1',
-                'content' => 'one common',
-                'status' => Post::STATUS_ACTIVE
-            ],
-            [
-                'title' => 'post_2',
-                'content' => 'two common',
-                'status' => Post::STATUS_ACTIVE
-            ],
-            [
-                'title' => 'post_3 (inactive)',
-                'content' => 'three common',
-                'status' => Post::STATUS_DELETED
-            ],
-        ];
-
-        return $data;
-    }
-
 }

@@ -1,0 +1,20 @@
+class_name: FunctionalTester
+modules:
+    enabled:
+        - REST
+        - Db
+        - Asserts
+        - Symfony
+    config:
+        Symfony:
+            app_path: '../src'
+            environment: 'test'
+            url: 'http://site.symfony4sphinxsearch_local'
+        REST:
+            url: 'http://site.symfony4sphinxsearch_local'
+            depends: Symfony
+        Db:
+            depends: Symfony
+            dsn: 'pgsql:host=postgres;dbname=symfony'
+            user: 'symfony'
+            password: '123456'

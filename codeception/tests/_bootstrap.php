@@ -1,3 +1,3 @@
 <?php
 
-require_once dirname(__FILE__) . '/Api/BaseApiCest.php';
+require_once dirname(__FILE__) . '/Functional/BaseFunctionalCest.php';

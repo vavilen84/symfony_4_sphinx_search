@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Tests\Api;
+namespace App\Tests\Functional;
 
-use \ApiTester;
+use \FunctionalTester;
 
-class BaseApiCest
+class BaseFunctionalCest
 {
-    public function _before(ApiTester $I)
+    public function _before(FunctionalTester $I)
     {
         $this->setRequestHeaders($I);
     }
 
-    protected function setRequestHeaders(ApiTester $I)
+    protected function setRequestHeaders(FunctionalTester $I)
     {
         $I->haveHttpHeader('Accept', 'application/json');
         $I->haveHttpHeader('Content-Type', 'application/json');

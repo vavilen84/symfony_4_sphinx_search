@@ -67,9 +67,5 @@ services:
         - local
     ports:
       - 9312:9312
-  redis:
-      image: redis:4.0.8
-      networks:
-          - local
 networks:
   local:

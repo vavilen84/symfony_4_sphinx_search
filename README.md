@@ -1,7 +1,8 @@
-# Symfony 4.* basic application skeleton includes:
-- Docker (php + nginx + postgres + adminer + redis)
+# Symfony 4.* + Sphinxsearch 3.11. Application includes:
+- Docker (php + nginx + postgres + adminer + sphinxsearch)
 - Codeception 
 - XDebug
+- [Implementation docs](https://github.com/vavilen84/symfony_4_sphinx_search/tree/master/docs)
 
 ##  Install Docker 
 
@@ -104,10 +105,21 @@ $ sudo ifconfig lo:0 10.254.254.254 up
 ```
 
 ## URLs:
-"http://site.symfony4basicskeleton_local/" - website<br>
-"http://adminer.symfony4basicskeleton_local:8080/" - adminer
+"http://site.symfony4sphinxsearch_local/" - website<br>
+"http://adminer.symfony4sphinxsearch_local:8080/" - adminer
 
-## Codeception 
+## Codeception
+ 
+create db schema (if not created yet)
+```
+$ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bin/console doctrine:schema:create 
+```
+
+upload fixtures
+```
+$ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bin/console doctrine:fixtures:load 
+```
+
 goto container
 ```
 $ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bash
@@ -117,14 +129,17 @@ run all tests
 ```
 $ php ../vendor/bin/codecept run tests
 ```
+
 run all tests under folder
 ```
-$ php ../vendor/bin/codecept run tests/Api
+$ php ../vendor/bin/codecept run tests/Functional
 ```
+
 run one test in debug mode
 ```
-$ php ../vendor/bin/codecept run tests/Api/BaseApiCest.php --debug
+$ php ../vendor/bin/codecept run tests/Functional/BaseFunctionalCest.php --debug
 ```
+
 build tester classes
 ```
 $ php ../vendor/bin/codecept build
