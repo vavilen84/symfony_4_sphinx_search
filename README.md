@@ -137,10 +137,20 @@ $ php ../vendor/bin/codecept run tests/Functional
 
 run one test in debug mode
 ```
-$ php ../vendor/bin/codecept run tests/Functional/BaseFunctionalCest.php --debug
+$ php ../vendor/bin/codecept run tests/Functional/SearchCest.php --debug
 ```
 
 build tester classes
 ```
 $ php ../vendor/bin/codecept build
+```
+
+## Sphinxsearch
+
+[Official page](http://sphinxsearch.com/)
+
+reindex
+
+```
+$ docker exec -it --user 1000 symfony4sphinxsearch_sphinxsearch_1 indexer --all --rotate --config /etc/sphinxsearch/sphinx.conf 
 ```
