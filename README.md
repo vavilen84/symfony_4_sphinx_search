@@ -108,6 +108,16 @@ $ sudo ifconfig lo:0 10.254.254.254 up
 "http://site.symfony4sphinxsearch_local/" - website<br>
 "http://adminer.symfony4sphinxsearch_local:8080/" - adminer
 
+## Sphinxsearch
+
+[Official page](http://sphinxsearch.com/)
+
+reindex
+
+```
+$ docker exec -it --user 1000 symfony4sphinxsearch_sphinxsearch_1 indexer --all --rotate --config /etc/sphinxsearch/sphinx.conf 
+```
+
 ## Codeception
  
 create db schema (if not created yet)
@@ -125,7 +135,7 @@ goto container
 $ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bash
 $ cd codeception
 ```
-run all tests
+run all tests (DONT FORGET TO REINDEX DATA!!!)
 ```
 $ php ../vendor/bin/codecept run tests
 ```
@@ -143,14 +153,4 @@ $ php ../vendor/bin/codecept run tests/Functional/SearchCest.php --debug
 build tester classes
 ```
 $ php ../vendor/bin/codecept build
-```
-
-## Sphinxsearch
-
-[Official page](http://sphinxsearch.com/)
-
-reindex
-
-```
-$ docker exec -it --user 1000 symfony4sphinxsearch_sphinxsearch_1 indexer --all --rotate --config /etc/sphinxsearch/sphinx.conf 
 ```
