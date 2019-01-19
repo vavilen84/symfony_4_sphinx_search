@@ -6,8 +6,9 @@ Application is based on [this](https://github.com/vavilen84/symfony_4_basic_skel
 
 We will have one entity - Post. Generate entity with a command:
 ```
-$ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bin/console make:entity
+$ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bin/console make:entity
 ```
+
 Result
 ```php
 <?php
@@ -54,7 +55,7 @@ class Post
 
 Generate controller with a command:
 ```
-$ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bin/console make:controller
+$ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bin/console make:controller
 ```
 
 Result
@@ -106,7 +107,7 @@ Lets make form
 ## Search Form
 
 ```
-$ docker exec -it --user 1000 symfony4sphinxsearch_php_1 bin/console make:form
+$ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bin/console make:form
 ```
 
 Result 
@@ -294,7 +295,7 @@ action view template
 {% endblock %}
 ```
 
-Thats All!
+That is all!
 
 
  
