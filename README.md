@@ -75,6 +75,12 @@ $ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bin/console doctrine
 
 "http://adminer.symfony_4_sphinx_search_local:8080/" - adminer
 
+Adminer credentials:<br>
+System: PostgreSQL<br>
+Server: postgres<br>
+Username: symfony<br>
+Password: 123456
+
 ## Sphinxsearch
 
 [Official page](http://sphinxsearch.com/)
