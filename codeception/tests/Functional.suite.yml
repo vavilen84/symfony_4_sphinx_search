@@ -9,9 +9,9 @@ modules:
         Symfony:
             app_path: '../src'
             environment: 'test'
-            url: 'http://site.symfony4sphinxsearch_local'
+            url: 'http://site.symfony_4_sphinx_search_local'
         REST:
-            url: 'http://site.symfony4sphinxsearch_local'
+            url: 'http://site.symfony_4_sphinx_search_local'
             depends: Symfony
         Db:
             depends: Symfony

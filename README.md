@@ -92,13 +92,6 @@ index(reindex) data
 $ docker exec -it --user 1000 symfony_4_sphinx_search_sphinxsearch_1 indexer --all --rotate --config /etc/sphinxsearch/sphinx.conf 
 ```
 
-run all tests
-```
-$ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bash
-$ cd codeception
-$ php ../vendor/bin/codecept run tests
-```
-
 run all tests under folder
 ```
 $ docker exec -it --user 1000 symfony_4_sphinx_search_php_1 bash
